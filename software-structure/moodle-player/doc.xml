@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="moodle-player.xslt" type="text/xsl"?>
+<html lang="fr">
+    <head>
+        <meta name="moodle-player-folder" content="./" />
+        <meta name="moodle-player-course-id" content="" />
+        <meta name="moodle-player-code-style" content="ir-black" />
+        <title>moodle-player-doc</title>
+    </head>
+    <body>
+        <section>
+            <h1>Usage</h1>
+            <article>
+                <h2>Installation</h2>
+                <p>
+                    <code>moodle-player</code>
+                    est un projet qui produit un répertoire contentant tout le nécessaire permettant la transformation d'une structure XML ayant une syntaxe HTML5 de base.
+                </p>
+                <p>Pour écrire une nouvelle documentation il suffit de créer un répertoire contenant le XML de documentation et ajouter le répertoire produit par moodle-player.</p>
+                <p>Dans le cadre d'une formation utilisable avec moodle, plusieurs scripts sont disponibles pour l'initialisation et la gestion du projet.</p>
+            </article>
+            <article>
+                <h3>Intégration dans Moodle</h3>
+
+                <details>
+                    <summary>Étapes détaillées avec saisie d'écran.</summary>
+                    <p>Produire un fichier compressé <em>.zip</em> et l'ajouter dans Moodle comme une resource de type <em>Fichier</em></p>
+                    <img src="asset/moodle-file-1.png" alt="asset/moodle-file-1.png"/>
+
+                    <p>Après l'upload, cliquez sur le fichier pour ouvrir une fenêtre de configuration.</p>
+                    <img src="asset/moodle-file-2.png" alt="asset/moodle-file-2.png"/>
+
+                    <p>Procédez à la décompression de l'archive.</p>
+                    <img src="asset/moodle-file-3.png" alt="asset/moodle-file-3.png"/>
+
+                    <p>Cliquez sur le fichier <em>.XML</em> contenant votre documentation pour ouvrir une fenêtre de configuration.</p>
+                    <img src="asset/moodle-file-4.png" alt="asset/moodle-file-4.png"/>
+
+                    <p>Utilisez le bouton: <em>Spécifier comme fichier principale</em></p>
+                    <img src="asset/moodle-file-5.png" alt="asset/moodle-file-5.png"/>
+                </details>
+            </article>
+            <article>
+                <h2>Configuration</h2>
+                <p>L'arborescence suivante offre une solution complète pour l'intégration moodle en considérant l'usage des scripts de validation et packaging.</p>
+                <pre>
+                    <code class="shell" data-title="Architecture de projet">
+                        <![CDATA[
+                            /project-folder
+                                doc/
+                                    moodle-player/          Outil pour la transformation de la présentation.
+                                    asset/                  Contient les images, diagram ou autres document nécessaire à la présentation.
+                                    documentation.xml       Documentation écrite dans un format HTML standard.
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                    Plusieurs configurations sont disponible en utilsant les balises
+                    <code>meta</code>
+                    dans la partie head du document.
+                </p>
+                <pre>
+                    <code class="html" data-title="Configuration avec les balises meta"><![CDATA[
+                            <!--
+                                L'emplacement du répertoire moodle-player
+                            -->
+                            <meta name="moodle-player-folder" content="moodle-player" />
+
+                            <meta name="moodle-player-course-id" content="107"></meta>
+
+                            <!--
+                                hybrid, vs2015,
+                                idea
+                            -->
+                            <meta name="moodle-player-code-style" content="ir-black" />
+                        ]]>
+                    </code>
+                </pre>
+                <ul>
+                    <li>
+                        <code>moodle-player-folder</code>
+                        Chemin complet pour obtenir de le projet de transformation offert moodle-player.
+                    </li>
+                    <li>
+                        <code>moodle-player-course-id</code>
+                        Identifiant unique du cours dans Moodle. Cette information est accessible dans la URL comme par exemple: <em>/course/view.php?id=</em><strong>107</strong>
+                    </li>
+                    <li>
+                        <code>moodle-player-code-style</code>
+                        Suivre les informations suivantes pour la sélection d'une présentation:
+                        <a href="https://highlightjs.org/static/demo/">Démo enligne pour la sélection d'un style pour le formatage du code.</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>Format</h2>
+                <p>
+                    Le framework
+                    <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Bootstrap 4</a>
+                    est disponible lors du rendu HTML, donc tous les structures HTML valide seront présentés correctement.
+                </p>
+                <p>Structure général (sémantique) du document.</p>
+                <pre>
+                    <code class="html" data-title="Structure d'un document" data-subtitle="Un menu pour la navigation sera généré en utilisant cette structure.">
+                        <![CDATA[
+                        <section>
+                            <h1>Le titre du sujet principal</h1>
+
+                            <article>
+                                <h2>Commentaire sur le sujet principale.</h2>
+                                <p>sous sujet princiopale</p>
+                            </article>
+
+                            <article>
+                                <h2>Un commentaire sur le sujet principale.</h2>
+                                <p>description du sou sujet</p>
+                            </article>
+
+                            <article>
+                                <h3>Plus de détail (niv 3)</h3>
+                                <p>description du sous sujet niveau 3</p>
+                            </article>
+
+                            <article>
+                                <h4>Plus de détail (niv 4)</h4>
+                                <p>description du sous sujet niveau 4</p>
+                            </article>
+
+                            <article>
+                                <h5>Plus de détail (niv 5)</h5>
+                                <p>description du sous sujet niveau 5</p>
+                            </article>
+
+                            <article>
+                                <h6>Plus de détail (niv 6)</h6>
+                                <p>description du sous sujet niveau 6</p>
+                            </article>
+                        </section>
+
+                        <section>
+                            <h1>Le titre du sujet principal</h1>
+
+                            <article>
+                                <h2>Commentaire sur le sujet principale.</h2>
+                                <p>sous sujet princiopale</p>
+                            </article>
+                        </section>
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>La librairie <em>highlight.js</em> pour la coloration de la syntaxe s'utilise de cette façon.</p>
+                <pre>
+                    <code class="html" data-title="Formatage du code pour plusieurs langages" data-subtitle="Utilisez le caracter data sans espace avant et après pour encapsuler les caractères spéciaux: &lt;![CDATA[ ]]&gt;">
+                        <![CDATA[
+                        <pre>
+                            <code class="html" data-title="Titre principale" data-subtitle="Description secondaire">
+
+                            </code>
+                        </pre>
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Le texte peut contenir du formatage pour représenter <em>une emphase</em>, <strong>une importance</strong> ou <kbd>une entrée au clavier</kbd>.</p>
+                <pre>
+                    <code class="html" data-title="Formatage du texte">
+                        <![CDATA[
+                            Le texte peut contenir du formatage pour représenter <em>une emphase</em>, <strong>une importance</strong> ou <kbd>une entrée au clavier</kbd>.
+                        ]]>
+                    </code>
+                </pre>
+
+                <blockquote class="blockquote">
+                    <p>Une citation peut être intégrée de cette façon</p>
+                    <footer class="blockquote-footer"><cite title="Source Title">Martin Vachon</cite></footer>
+                </blockquote>
+                <pre>
+                    <code class="html" data-title="Formatage d'une citation.">
+                        <![CDATA[
+                            <blockquote class="blockquote">
+                                <p>Une citation peut être intégrée de cette façon</p>
+                                <footer class="blockquote-footer"><cite title="Source Title">Martin Vachon</cite></footer>
+                            </blockquote>
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>La mise en page peut être réalisé avec <a href="https://getbootstrap.com/docs/4.0/layout/grid/">le system de grille de Bootstrap</a></p>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm border border-dark">
+                        Première colonne
+                        </div>
+                        <div class="col-sm border">
+                        Deuxième colonne
+                        </div>
+                        <div class="col-sm">
+                        Troisième colonne
+                        </div>
+                    </div>
+                </div>
+
+                <pre>
+                    <code class="html" data-title="Mise en page">
+                        <![CDATA[
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm border border-dark">Première colonne</div>
+                                    <div class="col-sm border">Deuxième colonne</div>
+                                    <div class="col-sm">Troisième colonne</div>
+                                </div>
+                            </div>
+                        ]]>
+                    </code>
+                </pre>
+
+            </article>
+        </section>
+    </body>
+</html>

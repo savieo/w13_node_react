@@ -1,0 +1,2484 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="moodle-player/moodle-player.xslt" ?>
+<html>
+    <head>
+      <title>Software Structure</title>
+        <meta name="moodle-player-folder" content="moodle-player"></meta>
+        <meta name="moodle-player-course-id" content="127"></meta>
+        <meta name="moodle-player-code-style" content="ir-black"></meta>
+    </head>
+    <body>
+        <section>
+            <h1>Introduction</h1>
+            <p>Replacing the canvas course to follow trends in the workplace</p>
+            <ul>
+                <li>
+                    <a href="https://www.w3schools.com/html/html5_canvas.asp">canvas (www.w3schools.com)</a>
+                </li>
+                <li>
+                    <a href="https://code.tutsplus.com/articles/21-ridiculously-impressive-html5-canvas-experiments--net-14210">21 Ridiculously Impressive HTML5 Canvas Experiments</a>
+                </li>
+                <li>
+                    <a href="https://js-dos.com/games/doom.exe.html">DOOM with HTML5 Canvas</a>
+                </li>
+            </ul>
+            <p>JavaScript is the most popular language at the moment...</p>
+            <ul>
+                <li>
+                    <a href="https://insights.stackoverflow.com/survey/2018/#technology">Survey 2018 (insights.stackoverflow.com)</a>
+                </li>
+                <li>
+                    <a href="https://insights.stackoverflow.com/survey/2019/#technology">Survey 2019 (insights.stackoverflow.com)</a>
+                </li>
+                <li>
+                    <a href="https://medium.com/javascript-scene/top-javascript-libraries-tech-to-learn-in-2018-c38028e028e6">Top JavaScript Frameworks and Topics to Learn in 2018</a>
+                </li>
+                <li>
+                    <a href="https://medium.com/javascript-scene/top-javascript-frameworks-and-topics-to-learn-in-2019-b4142f38df20">Top JavaScript Frameworks and Topics to Learn in 2019</a>
+                </li>
+            </ul>
+            <article>
+                <h2>Architecture</h2>
+                <p>Using JavaScript: Static Augmented Application vs Client Application</p>
+                <ul>
+                    <li>Progressive enhancement, graceful degradation</li>
+                    <li>
+                        Obtrusive
+                        <ul>
+                            <li><code>&lt;a href="javascript:window.open('http://server.com')"&gt;Obstrusive JavScript link&lt;/a&gt;</code></li>
+                            <li><code>&lt;a onclick="window.open('http://server.com')"&gt;Obstrusive JavScript link&lt;/a&gt;</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Unobtrusive
+                        <ul>
+                            <li><code>&lt;a href="http://server.com" id="link-id"&gt;Unobstrusive JavScript link&lt;/a&gt;</code></li>
+                            <li><code>document.getElementById("link-id").href="http://server.com"</code></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">Component Model</a></p>
+                <ul>
+                    <li>Encapsulation and reusability.</li>
+                    <li>Task partitioning for large teams.</li>
+                    <li>Continuous delivery (Agile).</li>
+                </ul>
+
+                <p><a href="https://en.wikipedia.org/wiki/Single-page_application">Single-page application (SPA)</a></p>
+                <ul>
+                    <li>The page does not load.</li>
+                    <li>Asynchronous request.</li>
+                    <li>Parallel execution of tasks.</li>
+                    <li>The status of client execution is maintained by the client (<a href="https://restfulapi.net/statelessness/">Stateless REST API</a>)</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Client &lt;=&gt; Server</h3>
+                <p>Basic structure, simple to understand and develop</p>
+                <p>Issues with scalability</p>
+                <p>Prevents iterative development: Continuous delivery (Agile)</p>
+                <img src="asset/introduction/architecture-client-serveur.png" alt="Client Architecture - Server" data-title="Client Architecture - Server"/>
+            </article>
+
+            <article>
+                <h3>SOA</h3>
+                <p><a href="https://en.wikipedia.org/wiki/Architecture_orient%C3%A9e_services">Service oriented architecture (SOA)</a></p>
+                <p>Comparable to the server client architecture with a server-side <a href="https://en.wikipedia.org/wiki/Enterprise_service_bus">nterprise service bus (ESB)</a></p>
+
+                <img src="asset/introduction/architecture-soa.png" alt="Architecture SOA" data-title="Architecture SOA" data-subtitle="Service oriented architecture"/>
+
+                <p><a href="https://www.edureka.co/blog/microservices-vs-soa/">Microservices vs SOA</a></p>
+                <p><a href="https://searchmicroservices.techtarget.com/definition/BPEL-Business-Process-Execution-Language">Business Process Execution Language (BPEL)</a></p>
+            </article>
+
+            <article>
+                <h3>Microservices</h3>
+                <p>Comparable to SOA but without using an enterprise service bus (ESB).</p>
+                <p>Each service satisfies a very specific need.</p>
+                <p>Intercommunication uses a JSON structure (plain text format)</p>
+                <p>Ideal for iterative development: Continuous delivery (Agile)</p>
+                <p>Facilitates scalability.</p>
+                <img src="asset/introduction/architecture-microservices.png" alt="Microservices Architecture" data-title="Microservices Architecture" />
+            </article>
+
+            <article>
+                <h2>Methodology</h2>
+                <p>Even if all developers of an application are competent, a design methodology is still necessary to achieve optimal results.</p>
+                <p>The traditional methodology (Waterfall) is now replaced by an iterative methodology (Rapid application development)</p>
+                <p>
+                    <a href="https://www.seguetech.com/waterfall-vs-agile-methodology/">Waterfall vs. Agile</a>
+                </p>
+            </article>
+            <article>
+                <h3>Extreme Programming</h3>
+                <p>Embrace changes</p>
+                <p>
+                    <a href="https://pdfs.semanticscholar.org/d776/3e265bb03a123c048b8776ecf9ca440fa914.pdf">Extreme Programming Explained</a>
+                </p>
+            </article>
+            <article>
+                <h3>Agile</h3>
+                <p>
+                  The <a href="https://www.scrumguides.org/scrum-guide.html">Scrum Guide</a> is available free online.
+                </p>
+                <p>
+                  <a href="https://blog.myagilepartner.en/index.php/2018/08/17/ceremonies-sprint-scrum/">Scrum ceremonies</a> and inspection points.
+                </p>
+            </article>
+            <article>
+                <h2>Installation</h2>
+                <p>
+                  It is <strong>highly </strong> recommended to install all tools in English.
+                </p>
+                <p>All the work will be kept in a git repository</p>
+                <p>
+                    VSC will be used in <a href="https://code.visualstudio.com/docs/editor/multi-root-workspaces">Multi-root Workspaces</a> mode.
+                </p>
+            </article>
+            <article>
+                <h3>Installation (git)</h3>
+                <p>
+                  Intall the <a href="https://git-scm.com/downloads">git client</a> with default configurations.
+                </p>
+                <p>
+                    <a href="https://help.github.com/en/articles/creating-a-new-repository">Create a new git repository</a>
+                    :
+                    <strong>vsc-software-structure</strong>
+                    on the site:
+                    <a href="https://gitisi.isi-mtl.com">https://gitisi.isi-mtl.com</a>
+                </p>
+                <p>
+                  At the root of the <strong>D</strong> disk, clone your repository with the following command: <kbd>git clone</kbd> followed by the URL of your repository.
+                </p>
+                <p>
+                  Create the repositories: 
+                    <strong>D:\vsc-software-structure\02-introduction</strong>
+                    and
+                    <strong>D:\vsc-software-structure\03-javascript</strong>
+                </p>
+            </article>
+            <article>
+                <h3>Installation (tools)</h3>
+                <ul>
+                    <li>
+                        <a href="https://nodejs.org/en/">Node.js</a>
+                        <ul>
+                            <li>
+                              Test the installation node:
+                                <kbd>node -v</kbd>
+                            </li>
+                            <li>
+                              Test the installation npm:
+                              <kbd>npm -v</kbd>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+                        with the following extentions:
+                        <ul>
+                            <li>ESLint (Dirk Baeumer)</li>
+                            <li>W3C Validation (Umoxfo)</li>
+                            <li>EditorConfig for VS Code</li>
+                            <li>REST Client (Huachao Mao)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>In Visual Studio:</p>
+                <ul>
+                    <li>
+                        <em>File -&gt; Open Folder...</em>
+                       and choose the repository:
+                        <strong>D:\vsc-sofware-structure</strong>
+                    </li>
+                    <li>
+                        <em>File -&gt; Add Folder to workspace...</em>
+                        and choose the repository:
+                        <strong>D:\vsc-workspace</strong> containing the contents of the previous course.
+                    </li>
+                </ul>
+                <p>Note: the use of the "Add Folder to workspace ..." menu automatically produces a "Multi-root Workspaces" in vsc</p>
+                <p>
+                    <em>File -&gt; Preferences -&gt; Settings</em>
+                  and add the following configuration
+                </p>
+                <pre>
+                    <code class="javascript" data-title="settings.json">
+                        <![CDATA[
+                            "editor.formatOnSave": true,
+                            "eslint.autoFixOnSave": true,
+                            "javascript.format.enable": false
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Create two files in the following directory:
+                  <strong>D:\vsc-software-structure</strong>
+                </p>
+                <pre>
+                    <code class="shell" data-title=".editorconfig" data-subtitle="Configuring the editorconfig plugin">
+                        <![CDATA[
+                            root = true
+
+                            [*]
+                            indent_style = space
+                            end_of_line = lf
+                            charset = utf-8
+                            trim_trailing_whitespace = true
+                            indent_size = 4
+                        ]]>
+                    </code>
+                </pre>
+                <pre>
+                    <code class="shell" data-title=".gitignore" data-subtitle="Configure GIT to allow exclusion of certain files and directory.">
+                        <![CDATA[
+                            **/node_modules/
+                            **/dist/
+
+                            **/test.json
+                            **/music-config.json
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>Installation Test</h2>
+                <p>
+                  Create the following files in the directory:
+                  <strong>D:\vsc-software-structure\02-introduction</strong>
+                </p>
+                <pre>
+                    <code class="html" data-title="test.html" data-subtitle="Test file for the web development environment">
+                        <![CDATA[
+                            <!DOCTYPE html>
+                            <html lang="en">
+
+                            <head>
+                                <meta charset="UTF-8">
+                                <title>Test</title>
+                            </head>
+
+                            <body>
+                                <script>
+                                    console.log('Objet Window: ', window)
+                                </script>
+                            </body>
+
+                            </html>
+                        ]]>
+                    </code>
+                </pre>
+                <pre>
+                    <code class="javascript" data-title="test.js" data-subtitle="Test file for the Node Js development environment.">
+                        <![CDATA[
+                            'use strict'
+
+                            console.log('Exécution JavaScript avec NodeJs')
+
+                            console.log(global)
+                        ]]>
+                    </code>
+                </pre>
+                <pre>
+                    <code class="javascript" data-title="add.js" data-subtitle="Test file for the Node Js Debugging environment">
+                        <![CDATA[
+                            function add(a, b) {
+                                return a + b;
+                            }
+
+                            const val1 = 2;
+                            const val2 = 6;
+
+                            console.log("Résultat de la fonction add: " + add(val1, val2))
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  See debugging example with the command
+                  <kbd>node add</kbd>
+                    or
+                    <kbd>node add.js</kbd>
+                </p>
+            </article>
+        </section>
+        <section>
+            <h1>JavaScript</h1>
+            <article>
+                <h2>NodeJs Project</h2>
+              <p>Initialize and configure the project</p>
+                <ul>
+                    <li>
+                      Click the right most button on the directory:
+                      <strong>03-javascript</strong>
+                        <em>-&gt; Open in Terminal</em>
+                    </li>
+                    <li>
+                        Execute the command:
+                        <kbd>npm init</kbd>
+                        and use the
+                        <kbd>Enter</kbd>
+                        key to choose the default values.
+                    </li>
+                    <li>
+                      Run the command:
+                      <kbd>npm install --save-dev eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-config-standard</kbd>
+                    </li>
+                </ul>
+                <p>Add the following file to the root for ESLint configuration.</p>
+                <pre>
+                    <code class="javascript" data-title=".eslintrc.json">
+                        <![CDATA[
+                            {
+                                "extends": "standard",
+                                "rules": {
+                                    "indent": [
+                                        "error",
+                                        4
+                                    ]
+                                },
+                                "overrides": [
+                                    {
+                                        "files": [
+                                            "**/*.js"
+                                        ]
+                                    }
+                                ],
+                                "env": {
+                                    "browser": true,
+                                    "node": true,
+                                    "es6": true
+                                }
+                            }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h2>ES6 (ECMAScript 2015)</h2>
+                <p>ES6 is almost completely supported in modern browsers.</p>
+                <p>By using a transpilator we can even use ES7, ES8, ES9 versions...</p>
+            </article>
+
+            <article>
+                <h3>Functional Programming</h3>
+                <p><a href="https://atendesigngroup.com/blog/array-map-filter-and-reduce-js">Array Map, Filter and Reduce in JS.</a></p>
+                <p>Pure functions and standard mathematical functions.</p>
+                <p>No Side Effects</p>
+                <p>Structure are immutable</p>
+                <p>Method chaining</p>
+            </article>
+
+            <article>
+                <h3>Arrow functions</h3>
+              <p>
+                New syntax available for writing function <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow functions</a>)
+              </p>
+                <pre>
+                    <code class="javascript" data-title="Using arrow functions">
+                        <![CDATA[
+                            function standard(a) {
+                                return a
+                            }
+
+                            const arrow = (a) => {
+                                return a
+                            }
+
+                            console.log(standard(2));
+                            console.log(arrow(2));
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>ES6 does not support this syntax for the sole purpose of having a shorter syntax... (see example: scope adjustment)</p>
+            </article>
+
+            <article>
+                <h3>spread operator and rest parameter</h3>
+                <p>
+                  The same operator used in 2 different ways (<a href="https://scotch.io/bar-talk/javascripts-three-dots-spread-vs-rest-operators543">Spread vs rest operators</a>)</p>
+                <p>
+                  Very comparable to <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/language/varargs.html">varargs</a></p>
+                <pre>
+                    <code class="javascript" data-title="Example of using 'rest parameters'">
+                        <![CDATA[
+                            function add(x, y) {
+                                return x + y;
+                            }
+
+                            add(1, 2, 3, 4, 5) // returns 3
+
+
+                            function add(...args) {
+                                let result = 0;
+
+                                for (let arg of args) {
+                                    result += arg;
+                                }
+
+                                return result
+                            }
+
+                            add(1) // returns 1
+                            add(1, 2) // returns 3
+                            add(1, 2, 3, 4, 5) // returns 15
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Immutable Processing Method</p>
+                <pre>
+                    <code class="javascript" data-title="Example of using 'spread operator'">
+                        <![CDATA[
+                            const test = [1, 2, 3, 4]
+
+                            test.push(5)
+
+                            console.log(test)
+
+                            console.log([...test, 6])
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Example of systaxe used by a <a href="https://redux.js.org/basics/reducers">reducer</a></p>
+                <pre>
+                    <code class="javascript" data-title="Example of using 'spread operator'" data-subtitle="Immutable modification of a structure">
+                        <![CDATA[
+                            const cat = {
+                                legs: 4,
+                                sound: 'meow'
+                            }
+
+                            const dog = {
+                                ...cat,
+                                sound: 'woof'
+                            }
+
+                            console.log(dog); // => { legs: 4, sounds: 'woof' }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <h1>Node Module</h1>
+            <article>
+                <h2>npm</h2>
+                <p>Dependency Management for NodeJs.</p>
+                <p>Task managemenet necessary for development and distribution (packaging).</p>
+                <p>Maven, Gradle and Ivy are similar tools for Java.</p>
+            </article>
+            <article>
+                <h3>Use Node Module</h3>
+                <p>
+                  Centralization of repository modules
+                  <a href="https://www.npmjs.com/">www.npmjs.com</a>
+                </p>
+                <ul>
+                    <li>Free, private and enterprise</li>
+                    <li>Search tool for modules.</li>
+                    <li>
+                        <a href="https://docs.npmjs.com/cli-documentation/">List of npm commands</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>Example</h3>
+                <p>
+                  Create the directory:
+                  <strong>04-node-module/example-node-module</strong>
+                </p>
+                <p>
+                    Execute the command
+                    <kbd>npm init</kbd>
+                    and answer the questions to create the file
+                    <a href="https://docs.npmjs.com/creating-a-package-json-file">package.json</a>
+                </p>
+                <p>
+                    <a href="https://docs.npmjs.com/files/package.json">Convention for creating the package.json file</a>
+                </p>
+                <ul>
+                    <li>
+                        <strong>name</strong>
+                      see conventions
+                    </li>
+                    <li>
+                        <strong>version</strong>
+                        major.minor.release (
+                        <a href="https://semver.org/">Semantic Versioning</a>
+                        )
+                    </li>
+                    <li>
+                        <strong>licence</strong>
+                        <a href="https://medium.com/@vovabilonenko/licenses-of-npm-dependencies-bacaa00c8c65">Should you care about the license? </a>
+                    </li>
+                    <li><strong>main</strong></li>
+                    <li>...</li>
+                </ul>
+                <p>
+                  Execution occurs by running the declared scripts in the object
+                  <a href="https://docs.npmjs.com/misc/scripts">scripts</a>
+                </p>
+                <p>
+                  The scripts by default are executed with the command
+                    <kbd>npm</kbd>
+                    followed by the name of the script, for example:
+                    <kbd>npm install</kbd>
+                </p>
+                <p>
+                  Other scripts are executed with the command
+                  <kbd>npm run</kbd>
+                  followed by the name of the script, for example:
+                  <kbd>npm run a-special-task</kbd>
+                </p>
+            </article>
+            <article>
+                <h4>Execution</h4>
+                <p>
+                  To execute a script
+                    <em>test</em>
+                  created by default:
+                  <kbd>npm test</kbd>
+                </p>
+                <p>Create a new script by adding the following configuration in package.json</p>
+                <pre>
+                    <code class="javascript" data-title="Ajout d'un nouveau script">
+                        <![CDATA[
+                            "scripts": {
+                                "test": "echo \"Error: no test specified\" && exit 1",
+                                "first-script": "echo \"Execution of my first script\""
+                            },
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Run the new script with the command:
+                  <kbd>npm run first-script</kbd>
+                </p>
+                <p>
+                  The
+                  <em>&amp;&amp;</em> characters
+                  allow to specify an operation sequence.
+                </p>
+                <p>
+                    Copy the <strong>add.js</strong> file (that you created in the previous section) into the root of the module and add the following script:
+                </p>
+                <pre>
+                    <code class="javascript" data-title="Adding an execution sequence">
+                        <![CDATA[
+                            "scripts": {
+                                "test": "echo \"Error: no test specified\" && exit 1",
+                                "first-script": "echo \"Execution of my first script\"",
+                                "add": "npm run first-script && node add.js"
+                            },
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>Node</h2>
+                <p>Convention for file names.</p>
+                <ul>
+                    <li>
+                        Always in lowercase
+                        <ul>
+                            <li>Windows does not recognize the case difference, while all other systems recognize the case.</li>
+                            <li>Use the "-" character instead of capital letters, for example: list-container.js</li>
+                        </ul>
+                    </li>
+                    <li>Do not use whitespace in the file name.</li>
+                    <li>Usually each file contains only one component.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Creating a reusable NodeJs module</h3>
+                <p>NodeJs offers a similar import mechanism to Java.</p>
+                <p>
+                  Given the various <a href="https://nodejs.org/api/globals.html">global objects vaialbe by default in NodeJS</a>, we can use the <a href="https://nodejs.org/api/globals.html#globals_module">module</a> global to export the module.
+                </p>
+                <p>
+                    Create the file
+                    <strong>index.js</strong>
+                    at the root and add the following code:
+                </p>
+                <pre>
+                    <code class="javascript" data-title="Example of exporting a module">
+                        <![CDATA[
+                            function add(a, b) {
+                                return a + b
+                            }
+
+                            module.exports.add = add
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Create the <strong>test.js</strong> file at the root with the following code to test the module.
+                </p>
+                <pre>
+                    <code class="javascript" data-title="Example of exporting a module">
+                        <![CDATA[
+                            const math = require('.')
+
+                            var result = math.add(2, 4)
+                            console.log(result)
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Run the test with the command
+                  <kbd>node test</kbd>
+                    or
+                    <kbd>node test.js</kbd>
+                </p>
+            </article>
+            <article>
+                <h2>Structure of a module</h2>
+                <p>NodeJs is very flexible but a base structure is needed:</p>
+                <ul>
+                    <li>
+                      Each module has a single entry point defined by the <strong>main</strong> property in package.json
+                        <ul>
+                            <li>
+                              Default value
+                              <strong>index.js</strong>
+                            </li>
+                            <li>Must not contain logic (only the export of public features)</li>
+                        </ul>
+                    </li>
+                    <li>
+                      Use the directory
+                      <strong>src</strong>
+                      to house code
+                    </li>
+                    <li>Create a file by class (or a file by subject ...)</li>
+                </ul>
+                <pre>
+                    <code class="shell" data-title="Example structure for a NodeJs project">
+                        <![CDATA[
+                            example/
+                                package.json
+                                index.js
+                                src/
+                                    file1.js
+                                    file2.js
+                        ]]>
+                    </code>
+                </pre>
+                <pre>
+                    <code class="javascript" data-title="index.js">
+                        <![CDATA[
+                            'use strict'
+
+                            const { file1 } = require('./src/file1')
+                            const { file2 } = require('./src/file2')
+
+                            module.exports = {
+                                file1,
+                                file2
+                            }
+                        ]]>
+                    </code>
+                </pre>
+                <pre>
+                    <code class="javascript" data-title="src/file1.js">
+                        <![CDATA[
+                            'use strict'
+
+                            const file1 = "code in file 1"
+
+                            module.exports = { file1 }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>Dependency</h2>
+                <p>Installation of new dependencies with npm</p>
+                <ul>
+                    <li>
+                        <strong>Dependencies</strong>
+                        <ul>
+                            <li>Dependency needed to run the application</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>devDependencies</strong>
+                        <ul>
+                            <li>Dependency needed to develop the application (tools)</li>
+                            <li>Dependency not deployed</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h1>Node</h1>
+            <article>
+                <h2>Native Object</h2>
+                <p>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/">Default libraries provided by NodeJs</a>
+                </p>
+                <p>
+                  A browser-like implementation exists for the 
+                  <a href="https://nodejs.org/dist/latest-v10.x/docs/api/console.html">
+                        <code>console object</code>
+                    </a>
+                </p>
+            </article>
+            <article>
+                <h3>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/path.html">
+                        <code>path</code>
+                    </a>
+                </h3>
+                <p>Abstraction used to manipulate access paths in your file system</p>
+                <p>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/path.html#path_path_sep">
+                        <code>path.sep</code>
+                    </a>
+                </p>
+                <p>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/path.html#path_path_parse_path">
+                        <code>path.parse</code>
+                    </a>
+                </p>
+                <p>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/path.html#path_path_join_paths">
+                        <code>path.join</code>
+                    </a>
+                </p>
+            </article>
+
+            <article>
+                <h3>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/fs.html">
+                        <code>fs</code>
+                    </a>
+                </h3>
+                <p>Most functions exist in synchronous or asynchronous mode.</p>
+                <p>
+                    Example:
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfile_path_options_callback">
+                        <code>fs.readFile</code>
+                    </a>
+                    et
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfilesync_path_options">
+                        <code>fs.readFileSync</code>
+                    </a>
+                </p>
+                <p>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_mkdirsync_path_options">
+                        <code>fs.mkdirSync</code>
+                    </a>
+                </p>
+                <p>
+                    <a href="https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_existssync_path">
+                        <code>fs.existsSync</code>
+                    </a>
+                </p>
+                <pre>
+                    <code class="javascript" data-title="Example of accessing the queuing system" data-subtitle="Disk access occurs synchronously.">
+                        <![CDATA[
+                            const fs = require('fs')
+
+                            function createFolder (dir) {
+                                if (!fs.existsSync(dir)) {
+                                    fs.mkdirSync(dir)
+                                    console.log('Directory created: ', dir)
+                                }
+                            }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h3>
+                    <a href="https://nodejs.org/api/assert.html">
+                        <code>assert</code>
+                    </a>
+                </h3>
+                <p>Assertion function for writing unit test.</p>
+                <p>
+                  The <a href="https://nodejs.org/api/assert.html#assert_strict_mode">strict assertion mode</a> is also available.
+                </p>
+                <pre>
+                    <code class="javascript" data-title="Example of using the assert object">
+                        <![CDATA[
+                            const assert = require('assert').strict
+
+                            const result = 'a'
+                            const expected = 'b'
+
+                            assert.strictEqual(result, expected, 'The result produced must be b')
+
+                            assert.deepStrictEqual({ a: 1 }, { a: 1})
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>The message passed as a third parameter is optional and is only used to quickly find the test that is in error.</p>
+
+                <pre>
+                    <code class="javascript" data-title="Example of a method assertion">
+                        <![CDATA[
+                            const assert = require('assert').strict
+
+                            function add (a, b) {
+                                return a + b
+                            }
+
+                            assert.strictEqual(add(2, 4), 6, 'Test of the add(2, 4) method')
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h2>PostgreSQL</h2>
+
+                <p><a href="https://www.postgresql.org/">PostgreSQL: The World's Most Advanced Open Source Relational Database</a></p>
+                <p>Similar to <a href="https://www.microsoft.com/en-ca/sql-server/sql-server-downloads">Micro$oft SQL server</a> or <a href="https://www.oracle.com/database/technologies/">Oracle Database</a></p>
+                <p>Download version 11 for Windows <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">PostgreSQL Database Download</a></p>
+
+                <p>Launch the installation and provide the following information.</p>
+                <ul>
+                    <li>Installation directory: <strong>D:\tool\PostgreSQL\11</strong></li>
+                    <li>user: <strong>postgres</strong> pass: <strong>postgres</strong></li>
+                    <li>locale: <strong>canada</strong></li>
+                </ul>
+
+                <p>Launch the administration interface: <strong>pgAdmin4</strong></p>
+            </article>
+
+            <article>
+                <h3>Connection to a database with NodeJs</h3>
+
+                <p>Create the repository: <strong>05-node/node-pg</strong></p>
+                <ul>
+                    <li>Initialize a NodeJs module </li>
+                    <li>Add ESLint using the configuration settings provided in the documentation of the 04-node-module section</li>
+
+                    <li>Install the PostgreSQL driver for NodeJs with the command: <kbd>npm install --save pg</kbd></li>
+                </ul>
+
+                <p>Run the following SQL script to create a new table:</p>
+                <pre>
+                    <code class="sql" data-title="Creating a table and initializing test data">
+                        <![CDATA[
+                            DROP TABLE IF EXISTS nodepg;
+
+                            CREATE TABLE nodepg (
+                            id            SERIAL PRIMARY KEY,
+                            stringField	VARCHAR(100) NOT NULL,
+                            dateNowField	TIMESTAMPTZ DEFAULT Now(),
+                            numberField	integer NOT NULL,
+                            booleanField	boolean NOT NULL
+                            );
+
+                            INSERT INTO nodepg (stringField, numberField, booleanField) VALUES ('chaîne de caractères 1', 666, true);
+                            INSERT INTO nodepg (stringField, numberField, booleanField) VALUES ('chaîne de caractères 2', 667, false);
+                            INSERT INTO nodepg (stringField, numberField, booleanField) VALUES ('chaîne de caractères 3', 668, false);
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>
+                  Copy the following code into the <strong>node-pg.js</strong> file at the root of the module 
+                </p>
+                <pre>
+                    <code class="javascript" data-title="node-pg.js" data-subtitle="Example de connection avec PostgreSQL">
+                        <![CDATA[
+                            const { Client } = require('pg')
+
+                            const client = new Client({
+                                host: 'localhost',
+                                port: 5432,
+                                database: 'software_structure',
+                                user: 'postgres',
+                                password: 'postgres'
+                            })
+
+                            client.connect((error) => {
+                                if (error) {
+                                    console.error('connection error', error.stack)
+                                } else {
+                                    console.log('connected')
+                                }
+                            })
+
+                            client.query('SELECT * FROM nodepg', (error, result) => {
+                                if (error) {
+                                    throw error
+                                }
+
+                                console.log(result)
+                                client.end()
+                            })
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Test the connection with the following command: <kbd>node node-pg</kbd></p>
+
+            </article>
+
+            <article>
+                <h2>Reusable module for PostgreSQL access</h2>
+                <ul>
+                    <li>
+                      Create the following file structure:
+                      <ul>
+                            <li>src/dao.js</li>
+                            <li>index.js</li>
+                            <li>test.js</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p>Copy the code below into each file respectively...</p>
+                <pre>
+                    <code class="javascript" data-title="src/dao.js" data-subtitle="Data Access Object for PostgreSQL access">
+                        <![CDATA[
+                            const { Client } = require('pg')
+
+                            let client = {}
+
+                            function connect () {
+                                client = new Client({
+                                    host: 'localhost',
+                                    port: 5432,
+                                    database: 'software_structure',
+                                    user: 'postgres',
+                                    password: 'postgres'
+                                })
+
+                                client.connect((error) => {
+                                    if (error) {
+                                        throw error
+                                    }
+                                })
+                            }
+
+                            function query (query, values, resultCallback) {
+                                client.query(query, values, (error, result) => {
+                                    if (error) {
+                                        throw error
+                                    }
+                                    resultCallback(result)
+                                })
+                            }
+
+                            function disconnect () {
+                                client.end()
+                            }
+
+                            module.exports = {
+                                connect: connect,
+                                disconnect: disconnect,
+                                query: query
+                            }
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript" data-title="index.js">
+                        <![CDATA[
+                            const dao = require('./src/dao')
+
+                            module.exports = dao
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript" data-title="test.js">
+                        <![CDATA[
+                            const dao = require('.')
+                            const assert = require('assert').strict
+
+                            dao.connect()
+
+                            dao.query('SELECT * FROM nodepg', [], (result) => {
+                                assert.strictEqual(result.command, 'SELECT')
+                            })
+
+                            dao.query('SELECT count(*) AS total FROM nodepg', [], (countResult) => {
+                                const total = parseInt(countResult.rows[0].total)
+
+                                dao.query('INSERT INTO nodepg (stringField, numberField, booleanField) VALUES ($1, $2, $3)', ['chaîne de caractères 4', 669, false], function () {
+                                    dao.query('SELECT * FROM nodepg', [], (result) => {
+                                        assert.strictEqual(result.rowCount, total + 1)
+
+                                        dao.disconnect()
+                                    })
+                                })
+                            })
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+        </section>
+        <section>
+            <h1>Node Express</h1>
+            <article>
+                <h2>HTTP and HTTPS</h2>
+                <p>The HTTP protocol is an additional layer on top of tcp/ip protocol.</p>
+                <p>The HTTPS protocol is the encrypted version of the HTTP protocol.</p>
+                <ul>
+                    <li>
+                        <strong>HTTP/1.1</strong>
+                        Text based protocol
+                    </li>
+                    <li>
+                        <strong>HTTP/2</strong>
+                        Binary based protocol, plus performant. (2015)
+                    </li>
+                    <li>
+                        <strong>HTTP/3</strong>
+                        In development
+                    </li>
+                </ul>
+                <p>
+                    <a href="https://www.perimeterx.com/blog/http2/">HTTP/2 - The Reasons, The Features And The Node.js Support</a>
+                </p>
+                <p>
+                  The NodeJs server provides basic support for
+                  <a href="https://nodejs.org/dist/latest-v10.x/docs/api/http.html">HTTP</a>
+                  ,
+                  <a href="https://nodejs.org/dist/latest-v10.x/docs/api/https.html">HTTPS</a>
+                  and
+                  <a href="https://nodejs.org/dist/latest-v10.x/docs/api/http2.html">HTTP/2</a> processing
+                </p>
+            </article>
+            <article>
+                <h3>Server</h3>
+                <p>Creating an HTTP server with NodeJs</p>
+                <ul>
+                    <li>
+                       Create the repository:
+                        <strong>06-node-express/node-server-minimal</strong>
+                    </li>
+                    <li>Initialize a NodeJs module</li>
+                    <li>Install ESLint and copy the configuration settings</li>
+                </ul>
+                <p>
+                    Create the file
+                    <strong>server.js</strong>
+                    at the root of the module and add 
+                    <code>console.log('Server Execution')</code>
+                    to the file.
+                </p>
+                <p>
+                    Start the server by running the
+                    <a href="https://docs.npmjs.com/cli/start">start script</a>
+                    with the 
+                    <kbd>npm start</kbd> command
+                </p>
+            </article>
+            <article>
+                <h3>Express Framework</h3>
+                <p>
+                  Install the  <a href="https://expressjs.com/">express</a> framework and the <a href="https://www.npmjs.com/package/body-parser">body-parser</a> middleware with the following command: <kbd>npm install --save express body-parser</kbd>
+                </p>
+                <p>
+                  Copy the following code into the file <strong>server.js</strong>
+                </p>
+                <pre>
+                    <code class="javascript" data-title="Server HTTP with NodeJs" data-subtitle="Example of using the express framework">
+                        <![CDATA[
+                            'use strict'
+
+                            const express = require('express')
+                            const bodyParser = require('body-parser')
+
+                            const app = express()
+
+                            // parse application/x-www-form-urlencoded
+                            app.use(bodyParser.urlencoded({ extended: true }))
+
+                            // parse application/json
+                            app.use(bodyParser.json())
+
+                            const PORT = 8080
+                            const HTTP_OK = 200
+                            const CONTENT_TYPE_JSON = 'application/json'
+                            const CONTENT_TYPE_HTML = 'text/html'
+
+                            app.get('/', function (request, response) {
+                                response.writeHead(HTTP_OK, { 'Content-Type': CONTENT_TYPE_HTML })
+                                response.end('<h1>Home page</h1>')
+                            })
+
+                            app.listen(PORT, function () {
+                                console.log('Server listening on: http://localhost:%s', PORT)
+                            })
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Add the following paths in the <strong>server.js</strong> file before the <code>app.listen()</code> line
+              </p>
+                <pre>
+                    <code class="javascript" data-title="Path Configuration" data-subtitle="Query example with parameter and POST method">
+                        <![CDATA[
+                            app.get('/test-param/:a', function (request, response) {
+                                response.writeHead(HTTP_OK, { 'Content-Type': CONTENT_TYPE_HTML })
+                                response.end('<h1>' + request.params.a + '</h1>')
+                            })
+
+                            app.get('/test-json', function (request, response) {
+                                const testObject = { a: 'val1', b: 'val2' }
+                                const testObjectString = JSON.stringify(testObject, null, 4)
+
+                                response.writeHead(HTTP_OK, { 'Content-Type': CONTENT_TYPE_JSON })
+                                response.end(testObjectString)
+                            })
+
+                            app.post('/test-json', function (request, response) {
+                                const testObjectString = JSON.stringify(request.body, null, 4)
+
+                                response.writeHead(HTTP_OK, { 'Content-Type': CONTENT_TYPE_JSON })
+                                response.end(testObjectString)
+                            })
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h3>Content-Type</h3>
+                <p>A GET request transfers the parameters through the URL.</p>
+                <p>A POST request transfers the parameters through the body of the request.</p>
+                <p>
+                  The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type">Content-Type</a> header
+                  controls the  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST">format of the body of a POST request.</a>
+                </p>
+            </article>
+            <article>
+                <h2>Testing the server</h2>
+                <p>
+                    Create the file
+                    <strong>test.rest</strong>
+                    at the root of the module
+                </p>
+                <pre>
+                    <code class="shell" data-title="configuration file for the REST Client plugin">
+                        <![CDATA[
+                            GET http://localhost:8080/ HTTP/1.1
+
+                            ###
+
+                            GET http://localhost:8080/test-json HTTP/1.1
+
+                            ###
+
+                            GET http://localhost:8080/test-param/allo
+
+                            ###
+
+                            POST http://localhost:8080/test-json HTTP/1.1
+                            Content-Type: application/x-www-form-urlencoded
+
+                            field1=value1&field2=value2
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>REST</h2>
+                <p>
+                  <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">HTTP request methods</a> are the basis of the REST standard
+                </p>
+                <ul>
+                    <li>
+                        <strong>GET</strong>
+                        (reading)
+                        <ul>
+                            <li>/products</li>
+                            <li>/products/32</li>
+                            <li>/users/12/profiles/33</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>POST</strong>
+                        (creation)
+                        <ul>
+                            <li>/products</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>PUT</strong>
+                        (updating)
+                        <ul>
+                            <li>/products/32</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>DELETE</strong>
+                        (removal)
+                        <ul>
+                            <li>/products/32</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section>
+            <h1>Modern JavaScript</h1>
+            <article>
+                <h2>History</h2>
+                <p>Important code is executed client side (no compilation)</p>
+                <p>Each browser implements its own interpreter</p>
+                <ul>
+                    <li>
+                        Chrome:
+                        <a href="https://v8.dev/">V8</a>
+                    </li>
+                    <li>
+                        Firefox:
+                        <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey">SpiderMonkey</a>
+                    </li>
+                    <li>
+                        IE:
+                        <a href="https://en.wikipedia.org/wiki/Chakra_(JScript_engine)">Chakra</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>jQuery</h3>
+                <p>Encapsulates differences between browser interpretaters allowing one code for all browsers.</p>
+                <p>
+                    <a href="https://www.w3schools.com/js/js_ajax_http.asp">XMLHttpRequest and ActiveXObject</a>
+                </p>
+                <p>
+                    <a href="https://www.impressivewebs.com/7-javascript-differences-between-firefox-ie/">7 JavaScript Differences Between Firefox &amp; IE</a>
+                </p>
+                <p>
+                    <a href="https://en.wikipedia.org/wiki/Conditional_comment">Conditional comment</a>
+                </p>
+            </article>
+            <article>
+                <h3>XML (SOAP) to JSON</h3>
+                <p>
+                    <a href="https://www.w3schools.com/xml/xml_soap.asp">SOAP</a>
+                  allows XML messages to be transfered using HTTP.
+                </p>
+                <p>soap:Envelope</p>
+                <ul>
+                    <li>Data structure independant from other languages</li>
+                    <li>Allows for normalization</li>
+                    <li>
+                      Allows for incoming messages to be validated (
+                        <a href="https://www.w3schools.com/xml/schema_intro.asp">schema</a>
+                        )
+                    </li>
+                </ul>
+                <p>
+                    <a href="https://json.org/">JSON</a>
+                </p>
+                <ul>
+                    <li>Data structure independant from other languages</li>
+                    <li>Few standards regarding normalization</li>
+                    <li>
+                      Allows for incoming messages to be validated (
+                      <a href="https://json-schema.org/">JSON SChema</a>
+                        )
+                    </li>
+                </ul>
+                <p>Conclusion</p>
+                <ul>
+                    <li>JSON is a data structure that can be used directly in JavaScript</li>
+                    <li>Ideal for JavaScript clients</li>
+                    <li>Ideal for small messages</li>
+                </ul>
+            </article>
+            <article>
+                <h2>Solution</h2>
+                <p>
+                    <a href="https://en.wikipedia.org/wiki/Lint_(software)">Lint</a>
+                </p>
+                <ul>
+                    <li>Code validation facilitates maintenance and evolution. (especially for big projects ...)</li>
+                    <li>
+                      Consistency in syntax allows for more efficient tools
+                      <ul>
+                            <li>Error detection</li>
+                            <li>Refactoring</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">Component based architecture</a>
+                </p>
+                <ul>
+                    <li>
+                        An individual software component is a
+                        <a href="https://en.wikipedia.org/wiki/Package_(package_management_system)">software package</a>
+                        , a
+                        <a href="https://en.wikipedia.org/wiki/Web_service">web service</a>
+                        , a
+                        <a href="https://en.wikipedia.org/wiki/Web_resource">web resource</a>
+                        , or a
+                        <a href="https://en.wikipedia.org/wiki/Modular_programming">module</a>
+                        that encapsulates a set of related
+                        <a href="https://en.wikipedia.org/wiki/Function_(computer_science)">functions</a>
+                        (or data)
+                    </li>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separation of concerns</a>
+                    </li>
+                </ul>
+                <p>
+                    <a href="https://webpack.js.org/">Webpack</a>
+                </p>
+                <ul>
+                    <li>Packaging an application for distribution.</li>
+                    <li>Development in reusable modules (NPM modules).</li>
+                    <li>Automation of all necessary tasks.</li>
+                </ul>
+                <p>
+                    <a href="https://babeljs.io/">Babel</a>
+                </p>
+                <ul>
+                    <li>Babel allows you to use advantages of the language that are not yet available for browsers.</li>
+                    <li>
+                        <a href="https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them">Transpilation</a>
+                        (source-to-source compiler)
+                        <ul>
+                            <li>Converting a new syntax to its older and better supported equivalence.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>Installing Babel Webpack</h2>
+                <ul>
+                  <li>Create the repository <strong>07-modern-javascript\webpack-babel</strong></li>
+                    <li>Initilise a node module .</li>
+                    <li>
+                        Install
+                        <a href="https://eslint.org/">ESlint</a>
+                        with the
+                        <a href="https://standardjs.com/">standard</a>
+                         configuration and the extention for react is
+                        <a href="https://github.com/standard/eslint-config-standard-jsx">eslint-config-standard-jsx</a>
+                        <ul>
+                            <li>
+                                <kbd>npm install --save-dev eslint eslint-config-standard eslint-config-standard-jsx eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react</kbd>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <kbd>npm install webpack webpack-cli --save-dev</kbd>
+                    </li>
+                    <li>
+                        <kbd>npm install html-webpack-plugin html-loader --save-dev</kbd>
+                    </li>
+                    <li>
+                        <kbd>npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev</kbd>
+                    </li>
+                </ul>
+                <p>Configure ESLint by creating the .eslintrc.json file at the root.</p>
+                <pre>
+                    <code class=".eslintrc.json" data-title="Configuring Babel for React support">
+                        <![CDATA[
+                            {
+                                "extends": [
+                                    "standard",
+                                    "standard-jsx"
+                                ],
+                                "rules": {
+                                    "indent": [
+                                        "error",
+                                        4
+                                    ],
+                                    "react/prop-types": 0
+                                },
+                                "overrides": [
+                                    {
+                                        "files": [
+                                            "**/*.js"
+                                        ]
+                                    }
+                                ],
+                                "env": {
+                                    "browser": true,
+                                    "node": true,
+                                    "es6": true
+                                }
+                            }
+                        ]]>
+                    </code>
+                </pre>
+                <p>Configure the Webpack mode in the package.json file</p>
+                <pre>
+                    <code class="json" data-title="Adding a new script to package.json">
+                        <![CDATA[
+                            "scripts": {
+                                "build": "webpack --mode development"
+                            }
+                        ]]>
+                    </code>
+                </pre>
+                <p>Configure Babel by adding the following configuration to the .babelrc file at the root of your project</p>
+                <pre>
+                    <code class="json" data-title=".babelrc" data-subtitle="Babel configuration file">
+                        <![CDATA[
+                            {
+                                "presets": ["@babel/preset-env", "@babel/preset-react"]
+                            }
+                        ]]>
+                    </code>
+                </pre>
+                <p>Configure the Webpack loaders by adding the following configurations to the webpack.config.js file at the root of your project.</p>
+                <pre>
+                    <code class="javascript" data-title="webpack.config.js" data-subtitle="Webpack config file">
+                        <![CDATA[
+                            const HtmlWebPackPlugin = require("html-webpack-plugin");
+                            const path = require('path');
+
+                            module.exports = {
+                            resolve: {
+                                alias: {
+                                    component: path.resolve(__dirname, 'src/component/'),
+                                    container: path.resolve(__dirname, 'src/container/'),
+                                    service: path.resolve(__dirname, 'src/service/')
+                                }
+                            },
+                            devtool: 'inline-source-map',
+                            module: {
+                                rules: [
+                                    {
+                                        test: /\.js$/,
+                                        exclude: /node_modules/,
+                                        use: {
+                                        loader: "babel-loader"
+                                        }
+                                    },
+                                    {
+                                        test: /\.html$/,
+                                        use: [{ loader: "html-loader", options: { minimize: false } }]
+                                    }
+                                ]
+                            },
+                            plugins: [
+                                    new HtmlWebPackPlugin({
+                                    template: "src/index.html",
+                                    filename: "./index.html"
+                                    })
+                                ]
+                            };
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                    Create the file
+                    <strong>src/index.html</strong>
+                </p>
+                <pre>
+                    <code class="html" data-title="src/index.html" data-subtitle="Webpack Template">
+                        <![CDATA[
+                            <!DOCTYPE html>
+                            <html lang="en">
+
+                            <head>
+                                <meta charset="utf-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1">
+                                <title>Webpack Babel</title>
+                            </head>
+
+                            <body>
+                                <section class="main">
+                                    <h1>HTML template to present a result with modern javascript</h1>
+                                </section>
+                            </body>
+
+                            </html>
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                    Create the file
+                    <strong>src/index.js</strong>
+                </p>
+                <pre>
+                    <code class="javascript" data-title="src/index.js" data-subtitle="Entry point of the module used by Webpack">
+                        <![CDATA[
+                            console.log('JavaScript execution of the main.js file produced by webpack and loaded by the index.html file')
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                    Start execution with the following command
+                    <kbd>npm run build</kbd>
+                </p>
+            </article>
+            <article>
+                <h2>Experimentation with Babel</h2>
+                <pre>
+                    <code class="javascript" data-title="Example of ES6 syntax">
+                        <![CDATA[
+                            class Animal {
+                                constructor (name, voice) {
+                                    this.name = name
+                                    this.voice = voice
+                                }
+
+                                speak () {
+                                    console.log(`The ${this.name} says ${this.voice}.`)
+                                }
+                            }
+
+                            var animal = new Animal('dog', 'woof')
+                            animal.speak()
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Start execution with the following command
+                    <kbd>npm run build</kbd>
+                </p>
+            </article>
+
+            <article>
+                <h2>CSS</h2>
+                <p>To use a component model, your CSS also has to be segmented into components. </p>
+                <p>The approach below is a simplification that can save/load global CSS files.</p>
+
+                <ul>
+                    <li>Install the loaders for the webpack with the command: <kbd>npm install css-loader style-loader --save-dev</kbd></li>
+                    <li>Create a css file: <strong>src/css/example.css</strong></li>
+                    <li>In your main component import the CSS Queue: <code>import '../css/example.css'</code></li>
+                </ul>
+
+                <pre>
+                    <code class="json" data-title="webpack.config.js" data-subtitle="Adding a rule in Webpack for CSS loading">
+                        <![CDATA[
+                            module: {
+                                rules: [
+                                    {
+                                        test: /\.css$/,
+                                        use: ['style-loader', 'css-loader']
+                                    }
+                                ]
+                            }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <h1>React, Vue, Angular</h1>
+            <article>
+                <h2>Virtual DOM and Direct DOM</h2>
+                <p>Optimization technique used for rendering in the browser.</p>
+            </article>
+            <article>
+                <h3>Virtual DOM</h3>
+                <ul>
+                    <li>Creates a copy of the DOM object.</li>
+                    <li>Modify the DOM object in memory.</li>
+                    <li>Detects the difference between the original structure and the one in memory.</li>
+                    <li>Synchronize the DOM to apply the changes (detected differences).</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Direct DOM</h3>
+                <ul>
+                    <li>Standard DOM modification via direct access.</li>
+                </ul>
+            </article>
+            <article>
+                <h2>Framework and library</h2>
+                <p>The difference between a library and a framework lies in the concept of inversion of control (IOC). A framework calls and executes an application's code, while a library is called by an application's code (which is being executed).</p>
+            </article>
+            <article>
+                <h3>Framework</h3>
+                <p>Complete set of functionality including event orchestration or operations.</p>
+            </article>
+            <article>
+                <h3>Library</h3>
+                <p>Specific functionality that does not include event orchestration or operation.</p>
+                <p>
+                    <a href="https://www.programcreek.com/2011/09/what-is-the-difference-between-a-java-library-and-a-framework/">Comparatif entre librairy et framework</a>
+                </p>
+            </article>
+            <article>
+                <h2>HTML (presentation and "template engine")</h2>
+                <p>Two different approaches:</p>
+                <ul>
+                    <li>A document containing HTML with content that will be replaced by a "template engine".</li>
+                    <li>A function that produces an HTML result.</li>
+                </ul>
+            </article>
+            <article>
+                <h2>Type Declaration (TypeScript, Flow, PropTypes)</h2>
+                <p>JavaScript is an untyped language.</p>
+                <pre>
+                    <code class="javascript" data-title="Comparison between untyped function and typed version.">
+                        <![CDATA[
+                            function add(a, b) {
+                                return a + b;
+                            }
+
+                            // This syntax requires TypeScript
+                            function add(a:number, b:number):number {
+                                return a + b;
+                            }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>Data binding</h2>
+                <p>Concept that describes the relationship between model and view (MVC)</p>
+                <img src="asset/react-vue-angular/DataBinding.png" alt="Data binding" data-title="Comparison between one way and two way data binding" />
+                <p>The "One way data binding" approach is also called "Unidirectional data flow""</p>
+            </article>
+            <article>
+                <h2>Comparison: React, Angular, Vue</h2>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>React</th>
+                        <th>Angular</th>
+                        <th>Vue</th>
+                    </tr>
+                    <tr>
+                        <th>Creation</th>
+                        <td>March 2013</td>
+                        <td>September 2016</td>
+                        <td>February 2014</td>
+                    </tr>
+                    <tr>
+                        <th>DOM</th>
+                        <td>Virtual DOM</td>
+                        <td>Direct DOM</td>
+                        <td>Virtual DOM</td>
+                    </tr>
+                    <tr>
+                        <th>Architecture</th>
+                        <td>Library</td>
+                        <td>Framework</td>
+                        <td>Framework</td>
+                    </tr>
+                    <tr>
+                        <th>HTML</th>
+                        <td>JSX</td>
+                        <td>Template (TypeScript)</td>
+                        <td>Template</td>
+                    </tr>
+                    <tr>
+                        <th>Typing</th>
+                        <td>PropType or Typescript</td>
+                        <td>TypeScript (Framework written in TypeScript)</td>
+                        <td>TypeScript (Declaration included)</td>
+                    </tr>
+                    <tr>
+                        <th>Binding</th>
+                        <td>One way data binding</td>
+                        <td>Two way data binding</td>
+                        <td>
+                            <a href="https://medium.com/js-dojo/exploring-vue-js-reactive-two-way-data-binding-da533d0c4554">Reactive two way data binding</a>
+                        </td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+        <section>
+            <h1>React component</h1>
+            <article>
+                <h2>React DOM and native React</h2>
+                <p>
+                    <a href="https://en.wikipedia.org/wiki/Responsive_web_design">Responsive web design:</a>
+                    One projet (
+                    <a href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp">Media queries</a>
+                    )
+                </p>
+                <p>Web and native: Two projects using two different technologies</p>
+            </article>
+            <article>
+                <h3>Solution</h3>
+                <p>Use the same architecture</p>
+                <p>Only the presentation components are different</p>
+                <p>Presentational and Container Components</p>
+                <ul>
+                    <li>
+                        Container component
+                        <ul>
+                            <li>State management</li>
+                            <li>Request management</li>
+                            <li>Business rule (application logic, validation)</li>
+                            <li>Error handling</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Presentational component
+                        <ul>
+                            <li>Presentation only (visual only)</li>
+                            <li>Dumb (no logic)</li>
+                            <li>Reusable</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>Installation</h2>
+                <p>Create the repository: <strong>09-react-component/js-react</strong></p>
+                <p>Copy the following files from the example webpack-babel </p>
+                <ul>
+                    <li>.babelrc</li>
+                    <li>package.json</li>
+                    <li>webpack.config.js</li>
+                </ul>
+                <p>New ESlint config for React</p>
+                <pre>
+                    <code class="json" data-title=".eslintrc.json">
+                        <![CDATA[
+                            {
+                                "extends": [
+                                    "standard",
+                                    "standard-jsx"
+                                ],
+                                "rules": {
+                                    "indent": [
+                                        "error",
+                                        4
+                                    ],
+                                    "react/jsx-indent": [
+                                        "error",
+                                        4
+                                    ],
+                                    "react/jsx-indent-props": [
+                                        "error",
+                                        4
+                                    ],
+                                    "react/prop-types": 0
+                                },
+                                "overrides": [
+                                    {
+                                        "files": [
+                                            "**/*.js"
+                                        ]
+                                    }
+                                ],
+                                "env": {
+                                    "browser": true,
+                                    "node": true,
+                                    "es6": true
+                                }
+                            }
+                        ]]>
+                    </code>
+                </pre>
+                <p>
+                  Install the dependencies
+                  <kbd>npm install</kbd>
+                </p>
+                <p>
+                    Add React
+                    <kbd>npm install react react-dom --save</kbd>
+                </p>
+                <p>Create the HTML template used by Webpack</p>
+                <pre>
+                    <code class="html" data-title="src/index.html">
+                        <![CDATA[
+                            <!DOCTYPE html>
+                            <html lang="en">
+
+                            <head>
+                                <meta charset="utf-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1">
+                                <title>js-react</title>
+                            </head>
+
+                            <body>
+                                <div id="app"></div>
+                            </body>
+
+                            </html>
+                        ]]>
+                    </code>
+                </pre>
+                <p>Create the entry point used by Webpack.</p>
+                <p>
+                  React DOM represents the <em>connection</em> between React and HTML
+                </p>
+                <pre>
+                    <code class="javascript" data-title="src/index.js">
+                        <![CDATA[
+                            import * as React from 'react'
+                            import * as ReactDOM from 'react-dom'
+
+                            import FormContainer from 'container/form-container'
+
+                            ReactDOM.render(
+                                <FormContainer />,
+                                document.getElementById('app')
+                            )
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>Container</h2>
+                <p><em>Class component</em> Responsible for processing all logic and implementation of component lifecycle functions.
+                </p>
+                <pre>
+                    <code class="javascript" data-title="src/container/form-container.js">
+                        <![CDATA[
+                            import React, { Component } from 'react'
+
+                            class FormContainer extends Component {
+                                render () {
+                                    return (
+                                        <div>
+                                            <h1>User Form</h1>
+                                            <form id='form-test'>
+                                            </form>
+                                        </div>
+                                    )
+                                }
+                            }
+
+                            export default FormContainer
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+            <article>
+                <h2>Presentation</h2>
+                <p><em>Functional component</em> Responsible for the presentation only, containing no logic.
+                </p>
+                <pre>
+                    <code class="javascript" data-title="src/component/input-component.js">
+                        <![CDATA[
+                            import React from 'react'
+
+                            const InputComponent = ({ text, type, id, name, value }) => (
+                                <div>
+                                    <label htmlFor={id}>{text}</label>
+                                    <input
+                                        type={type}
+                                        id={id}
+                                        name={name}
+                                        value={value} />
+                                </div>
+                            )
+
+                            export default InputComponent
+                        ]]>
+                    </code>
+                </pre>
+                <p>Modify form-container.js to obtain the following code:</p>
+                <pre>
+                    <code class="javascript" data-title="src/container/form-container.js" data-subtitle="Loading the presentation component: InputComponent">
+                        <![CDATA[
+                            import React, { Component } from 'react'
+
+                            import InputComponent from 'component/input-component'
+
+                            class FormContainer extends Component {
+                                render () {
+                                    return (
+                                        <div>
+                                            <h1>User Form</h1>
+                                            <form id='form-test'>
+                                                <InputComponent
+                                                    text="User Name:"
+                                                    type='text'
+                                                    id='userName_id'
+                                                    name='userName' />
+                                            </form>
+                                        </div>
+                                    )
+                                }
+                            }
+
+                            export default FormContainer
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <h1>React Async</h1>
+            <article>
+                <h2>Asynchronous communication</h2>
+
+                <p><a href="https://en.wikipedia.org/wiki/Ajax_(programming)">ajax</a> (Asynchronous JavaScript And XML)</p>
+                <p>The XML was used with the <a href="https://en.wikipedia.org/wiki/SOAP">SOAP (Simple Object Access Protocol)</a> protocol.</p>
+                <p>In Javascript, XML is much more difficult to use than is a JSON.</p>
+                <p>The page does not load (Normally SPA)</p>
+                <p>Transfer the minimum amount of information as possible to be maximally efficient. (What is the opposite of a SOAP message?)</p>
+
+            </article>
+
+            <article>
+                <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest"><code>XMLHttpRequest</code></a></h3>
+
+                <pre>
+                    <code class="javasript" data-title="Example of an asynchronous request with XMLHttpRequest">
+                        <![CDATA[
+                            const xhr = new XMLHttpRequest();
+
+                            // Add a listener to detect responses
+                            xhr.onreadystatechange = function () {
+
+                                // If the request is not completed
+                                if (xhr.readyState !== 4) {
+                                    return;
+                                }
+
+                                // Process the answer if successful
+                                if (xhr.status >= 200 && xhr.status < 300) {
+                                    // If the request is successful
+                                    console.log(JSON.parse(xhr.responseText));
+                                }
+
+                            };
+
+                            xhr.open('GET', 'https://server.com/api');
+                            xhr.send();
+                        ]]>
+                    </code>
+                </pre>
+
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange"><code>XMLHttp​Request​.onreadystatechange</code></a></p>
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState"><code>XMLHttp​Request​.ready​State</code></a></p>
+            </article>
+
+            <article>
+                <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><code>fetch</code></a></h3>
+                <p>Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>promise</code></a> instead of a callback</p>
+
+                <pre>
+                    <code class="javascript" data-title="Example of asynchronous request with fetch">
+                        <![CDATA[
+                            fetch('http://example.com/movies.json')
+                                .then(function(response) {
+                                    return response.json()
+                                })
+                                .then(function(myJson) {
+                                    console.log(JSON.stringify(myJson))
+                                });
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h3><a href="https://github.com/axios/axios">axios</a></h3>
+
+                <p>Utility to simplify browser support</p>
+                <p>Encapsulates XMLHttp Request, fetch and http for browsers and NodeJs</p>
+            </article>
+
+            <article>
+                <h2>webpack-dev-server</h2>
+
+                <p>Create the directory <strong>10-react-async/js-react-async</strong></p>
+                <p>Copy the configurations of the <strong>js-react</strong> project of the <strong>09 - React component</strong> (package.json, .eslintrc.json, .babelrc, webpack.config.js, index.html)</p>
+                <p>Note: Do not copy the node_modules directory</p>
+
+                <p>Install a test server with: <kbd>npm install webpack-dev-server --save-dev</kbd></p>
+
+                <p>Add a new script <strong>dev</strong> in the <strong>package.json</strong> file</p>
+
+                <pre>
+                    <code class="json" data-title="Startup script for the development server">
+                        <![CDATA[
+                            "scripts": {
+                                "test": "echo \"Error: no test specified\" && exit 1",
+                                "build": "webpack --mode development",
+                                "dev": "webpack-dev-server --open --mode development"
+                            }
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h2>Run an asynchronous query</h2>
+
+                <p>The Webpack development server offers several possibilities such as <strong>watch</strong>.</p>
+
+                <p>Create the following files:</p>
+                <pre>
+                    <code class="javascript" data-title="src/index.js">
+                        <![CDATA[
+                            import React from 'react'
+                            import ReactDOM from 'react-dom'
+
+                            import ListContainer from 'container/list-container'
+
+                            ReactDOM.render(
+                                <ListContainer />,
+                                document.getElementById('app')
+                            )
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript" data-title="src/container/list-container.js">
+                        <![CDATA[
+                            import React, { Component } from 'react'
+
+                            import ListItemComponent from 'component/list-item-component'
+
+                            class ListContainer extends Component {
+                                constructor () {
+                                    super()
+
+                                    this.state = {
+                                        users: []
+                                    }
+                                }
+
+                                componentDidMount () {
+                                    fetch('user-list.json', { method: 'GET' })
+                                        .then(response => response.json())
+                                        .then(response => {
+                                            this.setState({ users: response })
+                                        })
+                                }
+
+                                render () {
+                                    return (
+                                        <div>
+                                            <h1>Liste d&#39;usager</h1>
+                                            <ul>
+                                                {this.state.users.map((user) => <ListItemComponent text={user.userName} />)}
+                                            </ul>
+                                        </div>
+                                    )
+                                }
+                            }
+
+                            export default ListContainer
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Use methods from the <a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">React lifecycle</a></p>
+                <p>React Reference <a href="https://reactjs.org/docs/state-and-lifecycle.html">State and Lifecycle</a></p>
+
+                <pre>
+                    <code class="json" data-title="user-list.json" data-subtitle="JSON for simulating a REST server">
+                        <![CDATA[
+                            [
+                                {
+                                    "userName": "mvachon"
+                                },
+                                {
+                                    "userName": "patate"
+                                },
+                                {
+                                    "userName": "gcote"
+                                },
+                                {
+                                    "userName": "fmartineau"
+                                },
+                                {
+                                    "userName": "mstpierre"
+                                },
+                                {
+                                    "userName": "msimard"
+                                },
+                                {
+                                    "userName": "agermain"
+                                }
+                            ]
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript" data-title="src/component/list-item-component.js">
+                        <![CDATA[
+                            import React from 'react'
+
+                            const ListItemComponent = ({ text }) => (
+                                <li>{text}</li>
+                            )
+
+                            export default ListItemComponent
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Run the development server with the following command <kbd>npm run dev</kbd></p>
+                <p>Make a debugging example using the "sourcemaps"</p>
+                <p>Everything should work but we have a warning:<em>Warning: Each child in a list should have a unique "key" prop.</em></p>
+            </article>
+        </section>
+
+        <section>
+            <h1>React state</h1>
+            <article>
+                <h2>Instance variables</h2>
+
+                <p><a href="https://reactjs.org/docs/faq-state.html"><code>state</code></a></p>
+                <ul>
+                    <li>Represents the state of a component</li>
+                    <li>
+                      Initialized only in the constructor
+                      <ul>
+                        <li>It isn't necessary to decalre a constructor if there is no state initialization.</li>
+                      </ul>
+                    </li>
+                  <li>Modified only via a method</li>
+                  <li>Never call <code>setState()</code> in the constructor</li>
+                  <li>The state of a component is accessible only in the component itself</li>
+                </ul>
+
+                <p><a href="https://reactjs.org/docs/components-and-props.html"><code>props</code></a></p>
+                <ul>
+                    <li>Represents the parameters passed to the component</li>
+                    <li>Always read-only (never modify a props)</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Using <code>setState()</code></h3>
+
+                <p>Important: Using setState() merges the passed values with the current state to create a new state. Example: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign()</a></p>
+
+                <pre>
+                    <code class="javascript" data-title="First Syntax: An objet">
+                        <![CDATA[
+                            this.setState({comment: 'Hello'})
+                        ]]>
+                    </code>
+                </pre>
+
+                <pre>
+                    <code class="javascript" data-title="Second syntax: A fonction">
+                        <![CDATA[
+                            this.setState((state, props) => ({
+                                counter: state.counter + props.increment
+                            }))
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+
+            <article>
+                <h2>React Modeling</h2>
+
+                <p><strong>Class Component</strong> Normally used to create containers.</p>
+
+                <ul>
+                    <li>Contains logic</li>
+                    <li>Responsible for state maintenance</li>
+                    <li>Aggregation of presentation components</li>
+                    <li>Provide state information via the properties of the presentation components</li>
+                </ul>
+
+                <pre>
+                    <code class="javascript" data-title="Example of 'class component'">
+                        <![CDATA[
+                            class TestContainer extends React.Component {
+
+                                render() {
+                                    return (
+                                        <div>test</div>
+                                    )
+                                }
+
+                            }
+                        ]]>
+                    </code>
+                </pre>
+
+                <p><strong>Functional Component</strong> Normally used to create presentation components.</p>
+
+                <ul>
+                    <li>Contains the presentation</li>
+                    <li>Does no state maintenance</li>
+                </ul>
+
+                <pre>
+                    <code class="javascript" data-title="Example of 'functional component'">
+                        <![CDATA[
+                            const TestComponent = ({ text }) => (
+                                <div>{text}</div>
+                            )
+                        ]]>
+                    </code>
+                </pre>
+
+            </article>
+
+            <article>
+                <h2>Example</h2>
+
+                <p>Creating a project to demonstrate the use of <strong>state</strong> and <strong>props</strong></p>
+                <p>Copy the project <strong>10-react-async/js-react-async</strong> and rename it to <strong>11-react-state/js-react-async-state</strong></p>
+
+                <p>Modify <strong>index.js</strong> to have the follwing result:</p>
+                <pre>
+                    <code class="javascript" data-title="index.js">
+                        <![CDATA[
+                            import React from 'react'
+                            import ReactDOM from 'react-dom'
+
+                            import ApplicationContainer from 'container/application-container'
+
+                            ReactDOM.render(
+                                <ApplicationContainer />,
+                                document.getElementById('app')
+                            )
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Create a new container <strong>src/container/application-container.js</strong></p>
+                <pre>
+                    <code class="javascript" data-title="src/container/application-container.js">
+                        <![CDATA[
+                            import React, { Component } from 'react'
+
+                            import ToolbarComponent from 'component/toolbar-component'
+                            import FormContainer from 'container/form-container'
+                            import ListContainer from 'container/list-container'
+
+                            class ApplicationContainer extends Component {
+                                constructor (props) {
+                                    super(props)
+
+                                    this.state = {
+                                        isFormOpen: false
+                                    }
+
+                                    this.addOnClickHandler = this.addOnClickHandler.bind(this)
+                                    this.saveOnClickHandler = this.saveOnClickHandler.bind(this)
+                                }
+
+                                addOnClickHandler () {
+                                    this.setState({ isFormOpen: true })
+                                }
+
+                                saveOnClickHandler () {
+                                    this.setState({ isFormOpen: false })
+                                }
+
+                                render () {
+                                    const BUTTONS = [{
+                                        label: 'Add a user',
+                                        onClick: this.addOnClickHandler
+                                    }]
+
+                                    return (
+                                        <div>
+                                            <h1>Application</h1>
+                                            <ToolbarComponent buttons={BUTTONS} />
+                                            <div>
+                                                {this.state.isFormOpen ? <FormContainer saveOnClickHandler={this.saveOnClickHandler} /> : <ListContainer />}
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            }
+
+                            export default ApplicationContainer
+                        ]]>
+                    </code>
+                </pre>
+
+                <p>Create the componenet <strong>ToolbarComponent</strong> that will produce a clickable menu with a sigle link defined by the BUTTONS constructor.</p>
+
+                <p>Modify <strong>src/container/form-container.js</strong> to obtain the following result: </p>
+
+                <pre>
+                    <code class="javascript" data-title="src/container/form-container.js">
+                        <![CDATA[
+                            import React, { Component } from 'react'
+
+                            import InputComponent from 'component/input-component'
+
+                            class FormContainer extends Component {
+                                componentDidMount () {
+                                    console.log("FormContainer componentDidMount()") // eslint-disable-line
+                                }
+
+                                componentWillUnmount () {
+                                    console.log("FormContainer componentWillUnmount()") // eslint-disable-line
+                                }
+
+                                render () {
+                                    return (
+                                        <div>
+                                            <h1>Form for l&#39;add users</h1>
+
+                                            <form id='form-test'>
+                                                <InputComponent
+                                                    text="User Name:"
+                                                    type='text'
+                                                    name='userName'
+                                                    id='name_id' />
+                                            </form>
+
+                                            <button onClick={this.props.saveOnClickHandler}>Save</button>
+                                        </div>
+                                    )
+                                }
+                            }
+
+                            export default FormContainer
+                        ]]>
+                    </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <h1>Travail pratique</h1>
+        </section>
+        <section>
+            <h1>Travail pratique</h1>
+        </section>
+        <section>
+            <h1>Travail pratique</h1>
+        </section>
+        <section>
+            <h1>Practical examination</h1>
+        </section>
+        <section>
+            <h1>Theoretical exam</h1>
+        </section>
+        <section>
+            <h1>References</h1>
+            <article>
+                <h2>HTML CSS</h2>
+                <ul>
+                    <li>
+                        <a href="http://www.barelyfitz.com/screencast/html-training/css/positioning/">Learn CSS Positioning in Ten Steps</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>JavaScript</h2>
+                <ul>
+                    <li>
+                        <a href="https://javascript.info/">The Modern JavaScript Tutorial</a>
+                    </li>
+                    <li>
+                        <a href="https://www.tutorialspoint.com/javascript/index.htm">www.tutorialspoint.com/javascript</a>
+                    </li>
+                    <li>
+                        <a href="https://love2dev.com/blog/javascript-remove-from-array/">9 Ways to Remove Elements From A JavaScript Array - Plus How to Safely Clear JavaScript Arrays</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>NodeJs</h2>
+                <ul>
+                    <li>
+                        <a href="https://nodejs.org/docs/latest/api/modules.html">NodeJs module</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>ES6</h2>
+                <ul>
+                    <li>
+                        <a href="https://html5hive.org/es6-and-babel-tutorial/">Beginners ES6 and Babel Tutorial</a>
+                    </li>
+                    <li>
+                        <a href="https://buzut.net/programmation-fonctionnelle-en-javascript/">Programmation fonctionnelle en JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="https://nodejs.org/en/docs/es6/">NodeJs - ECMAScript 2015 (ES6) and beyond</a>
+                    </li>
+                    <li>
+                        <a href="https://ultimatecourses.com/blog/es6-arrow-functions-syntaxes-and-lexical-scoping">ES6 arrow functions, syntax and lexical scoping</a>
+                    </li>
+                    <li>
+                        <a href="https://www.codementor.io/niladrisekhardutta/how-to-call-apply-and-bind-in-javascript-8i1jca6jp">How-to: call() , apply() and bind() in JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="https://javascript.info/map-set-weakmap-weakset">Map, Set, WeakMap and WeakSet</a>
+                    </li>
+                    <li>
+                        <a href="https://atendesigngroup.com/blog/array-map-filter-and-reduce-js">Array Map, Filter and Reduce in JS</a>
+                    </li>
+                    <li><a href="https://dmitripavlutin.com/object-rest-spread-properties-javascript/">An easy guide to object rest/spread properties in JavaScript</a></li>
+                </ul>
+            </article>
+            <article>
+                <h2>React</h2>
+                <ul>
+                    <li>
+                        <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">Presentational and Container Components</a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/@alexmngn/from-reactjs-to-react-native-what-are-the-main-differences-between-both-d6e8e88ebf24">What are the main differences between ReactJS and React-Native?</a>
+                    </li>
+                    <li>
+                        <a href="https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7">The significance of React keys - a visual explanation</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>REST</h2>
+                <ul>
+                    <li><a href="https://restfulapi.net/">Rest API Tutorial</a></li>
+                    <li>
+                        <a href="https://hackernoon.com/restful-api-design-step-by-step-guide-2f2c9f9fcdbf">RESTful API Design</a>
+                    </li>
+                    <li>
+                        <a href="https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9">RESTful API Designing guidelines</a>
+                    </li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP headers</a>
+                    </li>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">List of HTTP header fields</a>
+                    </li>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">List of HTTP status codes</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>Microservices</h2>
+                <ul>
+                    <li><a href="https://microservices.io/">Microservice Architecture (reference)</a></li>
+                    <li><a href="https://medium.com/flow-ci/a-simple-introduction-to-microservices-a69446d2c211">A Simple Introduction to Microservices</a></li>
+                </ul>
+            </article>
+            <article>
+                <h2>Security</h2>
+                <ul>
+                    <li>
+                        <a href="http://oauthbible.com/">The OAuth Bible</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>PostgresSQL</h2>
+                <ul>
+                    <li>
+                        <a href="https://chartio.com/resources/tutorials/how-to-define-an-auto-increment-primary-key-in-postgresql/">How to Define an Auto Increment Primary Key in PostgreSQL</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>Good practice</h2>
+                <ul>
+                    <li>
+                        <a href="https://javascript.info/ninja-code"> List of things not to do (javascript.info/ninja-code)</a>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </body>
+</html>
